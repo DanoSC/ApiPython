@@ -50,7 +50,7 @@
             var municipioSeleccionado = document.getElementById("municipio").value;
             console.log("Municipio seleccionado:", municipioSeleccionado);
             // Llamada a la API para manejar la acción "Seleccionar por municipio"
-            fetch("http://apipython-58kb.onrender.com:8000/seleccionar_por_municipio", {
+            fetch("35.157.117.28:8000/seleccionar_por_municipio", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -66,7 +66,7 @@
 
         function seleccionarPorCantidad() {
             // Llamada a la API para manejar la acción "Seleccionar por Cantidad"
-            fetch("http:apipython-58kb.onrender.com:8000/seleccionar_por_cantidad", {
+            fetch("35.157.117.28:8000/seleccionar_por_cantidad", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -83,7 +83,7 @@
        
         function seleccionarTodos() {
             // Llamada a la API para manejar la acción "Seleccionar Todos"
-            fetch("http://apipython-58kb.onrender.com:8000/seleccionar_todos", {
+            fetch("35.157.117.28:8000/seleccionar_todos", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
