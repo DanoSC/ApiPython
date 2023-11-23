@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+</head>
+<body>
+
+{% if resultado %}
+    <h2>Resultados</h2>
+    <table border="1">
+        <tr>
+            <th>Columna 1</th>
+            <th>Columna 2</th>
+            <!-- Agrega más columnas según sea necesario -->
+        </tr>
+        {% for item in resultado %}
+            <tr>
+                <td>{{ item.columna1 }}</td>
+                <td>{{ item.columna2 }}</td>
+                <!-- Agrega más celdas según sea necesario -->
+            </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No hay datos disponibles.</p>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario y API</title>
+</head>
+
+<body>
+
+    <form id="miFormulario" onsubmit="event.preventDefault();">
+        <label for="etiquetamunicipio">Selecciona un municipio:</label>
+        <select id="municipio" name="municipio">
+            <option value="CALVIÀ">CALVIÀ</option>
+            <option value="PALMA">PALMA</option>
+            <option value="INCA">INCA</option>
+            <option value="CAPDEPERA">CAPDEPERA</option>
+            <option value="ALCÚDIA">ALCÚDIA</option>
+            <option value="FELANITX">FELANITX</option>
+            <option value="MARRATXÍ">MARRATXÍ</option>
+            <option value="ARTÀ">ARTÀ</option>
+            <option value="SANT LLORENÇ DES CARDASSAR">SANT LLORENÇ DES CARDASSAR</option>
+            <option value="SANTANYÍ">SANTANYÍ</option>
+            <option value="MANACOR">MANACOR</option>
+            <option value="SANTA MARGALIDA">SANTA MARGALIDA</option>
+            <option value="POLLENÇA">POLLENÇA</option>
+            <option value="MURO">MURO</option>
+            <option value="LLUCMAJOR">LLUCMAJOR</option>
+            <option value="SES SALINES">SES SALINES</option>
+            <option value="SÓLLER">SÓLLER</option>
+            <option value="CAMPOS">CAMPOS</option>
+            <option value="ANDRATX">ANDRATX</option>
+            <option value="SON SERVERA">SON SERVERA</option>
+            <option value="CAMPANET">CAMPANET</option>
+            <option value="BÚGER">BÚGER</option>
+        </select>
+
+        <br>
+
+        <button type="submit" onclick="seleccionarPorMunicipio()">Seleccionar por Municipio</button>
+        <button type="submit" onclick="seleccionarPorCantidad()">Seleccionar por Cantidad</button>
+        <button type="submit" onclick="seleccionarTodos()">Seleccionar Todos</button>
+    </form>
+
+    <div id="resultados"></div>
+
+    <script>
+        function seleccionarPorMunicipio() {
+            var municipioSeleccionado = document.getElementById("municipio").value;
+            console.log("Municipio seleccionado:", municipioSeleccionado);
+            // Llamada a la API para manejar la acción "Seleccionar por municipio"
+            fetch("http://192.168.1.50:8000/seleccionar_por_municipio", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: new URLSearchParams({ municipio: municipioSeleccionado }),
+            })
+                .then(response => response.text())
+                .then(html => {
+                    // Mostrar la respuesta HTML en la sección de resultados
+                    document.getElementById("resultados").innerHTML = html;
+                });
+        }
+
+        function seleccionarPorCantidad() {
+            // Llamada a la API para manejar la acción "Seleccionar por Cantidad"
+            fetch("http://192.168.1.50:8000/seleccionar_por_cantidad", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ action: "seleccionar_por_cantidad" }),
+            })
+                .then(response => response.text())
+                .then(html => {
+                    // Mostrar la respuesta HTML en la sección de resultados
+                    document.getElementById("resultados").innerHTML = html;
+                });
+        }
+
+       
+        function seleccionarTodos() {
+            // Llamada a la API para manejar la acción "Seleccionar Todos"
+            fetch("http://192.168.1.50:8000/seleccionar_todos", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ action: "seleccionar_todos" }),
+            })
+                .then(response => response.text())
+                .then(html => {
+                    // Mostrar la respuesta HTML en la sección de resultados
+                    document.getElementById("resultados").innerHTML = html;
+                });
+        }
+    </script>
+
+</body>
+
+</html>
+</html>
