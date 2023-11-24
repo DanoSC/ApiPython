@@ -195,7 +195,7 @@ async def seleccionar_todos(request: Request):
 print()
 if __name__ == "__main__":
     print("-> Inicio integrado de servicIo web")
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=10000)
 else:
     print("=> Iniciado desde el servidor web")
     print("   Módulo python iniciado:", __name__)
