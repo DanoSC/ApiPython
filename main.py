@@ -30,12 +30,14 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
 def read_root(request: Request):
+    print('accedemos a nuestro formulario')
     return templates.TemplateResponse("formulario.html", {"request": request})
 
 
 # Ruta para manejar las acciones del formulario
 @app.post("/seleccionar_por_municipio/")
 async def seleccionar_por_municipio(request: Request):
+    print('accedemos a la seleccion por municipio')
     try:
         # Especificar el valor deseado para la columna 10
         form_data = await request.form()
@@ -97,6 +99,7 @@ async def seleccionar_por_municipio(request: Request):
 
 @app.post("/seleccionar_por_cantidad/")
 async def seleccionar_por_cantidad(request: Request):
+    print('accedemos a la seleccion por cantidad')
     try:
         # Hacer una solicitud a la API y obtener los datos
         response = requests.get(url, headers=headers)
@@ -140,6 +143,7 @@ async def seleccionar_por_cantidad(request: Request):
 # Ruta para manejar la acción "Seleccionar Todos"
 @app.post("/seleccionar_todos/", response_class=HTMLResponse)
 async def seleccionar_todos(request: Request):
+    print('accedemos a la seleccion todo')
     try:
         # Hacer una solicitud a la API y obtener los datos
         response = requests.get(url, headers=headers)
